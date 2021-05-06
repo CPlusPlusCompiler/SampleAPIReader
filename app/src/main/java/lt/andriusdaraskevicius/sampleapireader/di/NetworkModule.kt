@@ -5,7 +5,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import lt.andriusdaraskevicius.sampleapireader.data.IPostsService
+import lt.andriusdaraskevicius.sampleapireader.data.remote.IPostsService
 import lt.andriusdaraskevicius.sampleapireader.util.AppConfig
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

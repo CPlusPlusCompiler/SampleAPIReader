@@ -7,11 +7,11 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.item_post.view.*
 import lt.andriusdaraskevicius.sampleapireader.R
+import lt.andriusdaraskevicius.sampleapireader.data.entities.Post
 
-// todo instead of this generic adapter, make a fancier one
-class GenericRecyclerAdapter<T>(
-    private val items: List<T>
-): RecyclerView.Adapter<GenericRecyclerAdapter<T>.ViewHolder>() {
+class PostsAdapter(
+    private val items: List<Post>
+): RecyclerView.Adapter<PostsAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
@@ -23,7 +23,8 @@ class GenericRecyclerAdapter<T>(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = items[position]
         holder.apply {
-            tvText.text = item.toString()
+            tvTitle.text = item.toString()
+            tvPreview.text = item.body
         }
     }
 
@@ -34,7 +35,8 @@ class GenericRecyclerAdapter<T>(
 
 
     inner class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
-        val tvText: TextView = view.tvTitle
+        val tvTitle: TextView = view.tvTitle
+        val tvPreview: TextView = view.tvPostPreview
     }
 
 }

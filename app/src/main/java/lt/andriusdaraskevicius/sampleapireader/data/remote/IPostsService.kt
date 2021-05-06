@@ -1,4 +1,4 @@
-package lt.andriusdaraskevicius.sampleapireader.data
+package lt.andriusdaraskevicius.sampleapireader.data.remote
 
 import lt.andriusdaraskevicius.sampleapireader.data.entities.Post
 import lt.andriusdaraskevicius.sampleapireader.data.entities.User

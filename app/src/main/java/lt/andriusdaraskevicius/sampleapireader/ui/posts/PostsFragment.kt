@@ -12,7 +12,7 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.launch
 import lt.andriusdaraskevicius.sampleapireader.R
-import lt.andriusdaraskevicius.sampleapireader.data.entities.Post
+import lt.andriusdaraskevicius.sampleapireader.data.Resource
 import lt.andriusdaraskevicius.sampleapireader.ui.BaseFragment
 
 @AndroidEntryPoint
@@ -27,9 +27,17 @@ class PostsFragment: BaseFragment(R.layout.fragment_posts) {
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.posts
                 .flowOn(Dispatchers.IO)
-                .collect { posts ->
-                    rvPosts.adapter = GenericRecyclerAdapter<Post>(posts)
-                    rvPosts.layoutManager = LinearLayoutManager(requireContext())
+                .collect { result ->
+                    when(result) {
+                        is Resource.Success -> {
+                            rvPosts.adapter = PostsAdapter(result.data)
+                            rvPosts.layoutManager = LinearLayoutManager(requireContext())
+                        }
+                        is Resource.Failure -> {
+                            showErrorMessage(result.message)
+                        }
+                    }
+
                 }
         }
     }
