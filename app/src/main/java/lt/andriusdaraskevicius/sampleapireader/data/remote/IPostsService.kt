@@ -1,7 +1,7 @@
-package lt.andriusdaraskevicius.sampleapireader.data.remote
+package lt.andriusdaraskevicius.sampleapireader.data.data_sources
 
-import lt.andriusdaraskevicius.sampleapireader.data.entities.Post
-import lt.andriusdaraskevicius.sampleapireader.data.entities.User
+import lt.andriusdaraskevicius.sampleapireader.data.models.Post
+import lt.andriusdaraskevicius.sampleapireader.data.models.User
 import retrofit2.http.GET
 import retrofit2.http.Path
 
@@ -11,8 +11,8 @@ interface IPostsService {
     suspend fun getPosts(): List<Post>
 
     @GET("posts/{post_id}")
-    suspend fun getPostDetails(@Path("post_id") postId: Int): Post
+    suspend fun getPostDetails(@Path("post_id") postId: Long): Post
 
     @GET("users/{user_id}")
-    suspend fun getUserDetails(@Path("user_id") userId: Int): User
+    suspend fun getUserDetails(@Path("user_id") userId: Long): User
 }
