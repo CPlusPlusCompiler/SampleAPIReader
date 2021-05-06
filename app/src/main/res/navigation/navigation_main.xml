@@ -6,5 +6,17 @@
     <fragment
         android:id="@+id/postsFragment"
         android:name="lt.andriusdaraskevicius.sampleapireader.ui.posts.PostsFragment"
-        android:label="PostsFragment" />
+        android:label="PostsFragment" >
+        <action
+            android:id="@+id/openPostDetails"
+            app:destination="@id/postDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/postDetailsFragment"
+        android:name="lt.andriusdaraskevicius.sampleapireader.ui.posts.PostDetailsFragment"
+        android:label="PostDetailsFragment" >
+        <argument
+            android:name="postId"
+            app:argType="long" />
+    </fragment>
 </navigation>

@@ -16,12 +16,16 @@ class PostsViewModel @Inject constructor (
     private val repository: PostsRepository
 ): ViewModel() {
 
-    val posts = flow<Resource<List<Post>>> {
-        repository.posts
+    fun getAllPosts() = flow<Resource<List<Post>>> {
+        repository.getAllPosts()
             .flowOn(Dispatchers.IO)
             .collect { repoPosts ->
                 emit(repoPosts)
             }
+    }.flowOn(Dispatchers.IO)
 
+
+    fun getPost(id: Long) = flow<Resource<Post>> {
+        emit(repository.getPost(id))
     }.flowOn(Dispatchers.IO)
 }

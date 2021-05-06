@@ -5,12 +5,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.card.MaterialCardView
 import kotlinx.android.synthetic.main.item_post.view.*
 import lt.andriusdaraskevicius.sampleapireader.R
 import lt.andriusdaraskevicius.sampleapireader.data.entities.Post
 
 class PostsAdapter(
-    private val items: List<Post>
+    private val items: List<Post>,
+    val onClick: (item: Post) -> Unit
 ): RecyclerView.Adapter<PostsAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -25,6 +27,9 @@ class PostsAdapter(
         holder.apply {
             tvTitle.text = item.toString()
             tvPreview.text = item.body
+            container.setOnClickListener {
+                onClick.invoke(item)
+            }
         }
     }
 
@@ -37,6 +42,7 @@ class PostsAdapter(
     inner class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
         val tvTitle: TextView = view.tvTitle
         val tvPreview: TextView = view.tvPostPreview
+        val container: MaterialCardView = view.mcvContainer
     }
 
 }

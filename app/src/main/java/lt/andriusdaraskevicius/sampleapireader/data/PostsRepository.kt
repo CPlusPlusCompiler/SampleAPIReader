@@ -14,8 +14,7 @@ class PostsRepository @Inject constructor (
    private val usersDao: UsersDao
 ) {
 
-   val posts = flow<Resource<List<Post>>> {
-
+   fun getAllPosts() = flow<Resource<List<Post>>> {
       val databasePosts = try {
          Resource.Success(postsDao.getAll())
       }
@@ -44,4 +43,22 @@ class PostsRepository @Inject constructor (
 
       emit(remotePosts)
    }
+
+
+   suspend fun getPost(id: Long): Resource<Post> {
+      return try {
+         val post = postsDao.get(id)
+
+         if(post == null)
+            Resource.Failure("Post not found")
+         else
+            Resource.Success(post)
+      }
+      catch (e: Exception) {
+         e.printStackTrace()
+         Resource.Failure("Error")
+      }
+   }
+
+
 }
