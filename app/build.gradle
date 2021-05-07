@@ -82,4 +82,5 @@ dependencies {
 
     // image loading, Glide alternative
     implementation "io.coil-kt:coil:1.2.1"
+
 }

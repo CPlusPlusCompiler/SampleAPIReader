@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.card.MaterialCardView
 import kotlinx.android.synthetic.main.item_post.view.*
 import lt.andriusdaraskevicius.sampleapireader.R
-import lt.andriusdaraskevicius.sampleapireader.data.entities.Post
+import lt.andriusdaraskevicius.sampleapireader.data.models.Post
 
 class PostsAdapter(
     private val items: List<Post>,

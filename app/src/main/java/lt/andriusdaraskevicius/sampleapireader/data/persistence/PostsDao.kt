@@ -2,7 +2,7 @@ package lt.andriusdaraskevicius.sampleapireader.data.persistence
 
 import androidx.room.Dao
 import androidx.room.Query
-import lt.andriusdaraskevicius.sampleapireader.data.entities.Post
+import lt.andriusdaraskevicius.sampleapireader.data.models.Post
 
 @Dao
 interface PostsDao: BaseDao<Post> {

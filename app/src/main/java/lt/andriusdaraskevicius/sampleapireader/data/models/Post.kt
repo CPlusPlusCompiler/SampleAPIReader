@@ -1,4 +1,4 @@
-package lt.andriusdaraskevicius.sampleapireader.data.entities
+package lt.andriusdaraskevicius.sampleapireader.data.models
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

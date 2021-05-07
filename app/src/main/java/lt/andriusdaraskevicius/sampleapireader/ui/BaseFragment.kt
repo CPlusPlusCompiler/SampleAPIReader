@@ -12,13 +12,14 @@ open class BaseFragment(@LayoutRes layoutId: Int): Fragment(layoutId) {
     }
 
 
-    protected fun showErrorMessage(message: String) {
+    protected fun showErrorMessage(message: String, onRetry: () -> Unit) {
         AlertDialog.Builder(requireContext())
-            .setTitle(R.string.error_occured)
+            .setTitle(R.string.error_occurred)
             .setMessage(message)
             .setNegativeButton(android.R.string.cancel) {_, _ ->}
-            .setNeutralButton(android.R.string.ok) {_, _ ->}
-            .setPositiveButton(android.R.string.ok) {_, _ ->}
+            .setPositiveButton(R.string.retry) {_, _ ->
+                onRetry.invoke()
+            }
             .show()
     }
 

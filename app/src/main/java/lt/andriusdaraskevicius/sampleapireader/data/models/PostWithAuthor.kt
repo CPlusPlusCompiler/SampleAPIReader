@@ -1,6 +1,6 @@
-package lt.andriusdaraskevicius.sampleapireader.data.entities
+package lt.andriusdaraskevicius.sampleapireader.data.models
 
-data class PostWithUser (
+data class PostWithAuthor (
     val post: Post,
-    val user: User
+    val user: User?
 )

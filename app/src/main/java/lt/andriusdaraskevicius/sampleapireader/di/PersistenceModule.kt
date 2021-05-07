@@ -8,7 +8,7 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import lt.andriusdaraskevicius.sampleapireader.data.persistence.AppDatabase
 import lt.andriusdaraskevicius.sampleapireader.data.persistence.PostsDao
-import lt.andriusdaraskevicius.sampleapireader.data.persistence.UsersDao
+import lt.andriusdaraskevicius.sampleapireader.util.AppConfig
 import javax.inject.Singleton
 
 @Module
@@ -19,7 +19,7 @@ object PersistenceModule {
     @Singleton
     fun provideDatabase(application: Application): AppDatabase {
         return Room
-                .databaseBuilder(application, AppDatabase::class.java, "Posts.db")
+                .databaseBuilder(application, AppDatabase::class.java, AppConfig.DATABASE_NAME)
                 .fallbackToDestructiveMigration()
                 .build()
     }
@@ -28,12 +28,6 @@ object PersistenceModule {
     @Singleton
     fun providePostsDao(database: AppDatabase): PostsDao {
         return database.postsDao()
-    }
-
-    @Provides
-    @Singleton
-    fun provideUsersDao(database: AppDatabase): UsersDao {
-        return database.usersDao()
     }
 
 
